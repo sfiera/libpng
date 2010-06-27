@@ -38,5 +38,13 @@
                 ],
             },
         },
+        {
+            'target_name': 'pngtest',
+            'type': 'executable',
+            'sources': [ 'pngtest.c' ],
+            'dependencies': [
+                'libpng',
+            ],
+        },
     ],
 }
