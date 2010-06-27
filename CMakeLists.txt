@@ -22,7 +22,7 @@ enable_testing()
 
 set(PNGLIB_MAJOR 1)
 set(PNGLIB_MINOR 4)
-set(PNGLIB_RELEASE 1)
+set(PNGLIB_RELEASE 3)
 set(PNGLIB_NAME libpng${PNGLIB_MAJOR}${PNGLIB_MINOR})
 set(PNGLIB_VERSION ${PNGLIB_MAJOR}.${PNGLIB_MINOR}.${PNGLIB_RELEASE})
 
@@ -125,6 +125,10 @@ set(pngtest_sources
 
 add_definitions(-DPNG_CONFIGURE_LIBPNG)
 
+if(_AIX)
+  add_definitions(-D_ALL_SOURCE)
+endif(_AIX)
+
 if(MSVC)
   add_definitions(-DPNG_NO_MODULEDEF -D_CRT_SECURE_NO_DEPRECATE)
 endif(MSVC)
@@ -209,7 +213,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libpng-config.in
 # SET UP LINKS
 if(PNG_SHARED)
   set_target_properties(${PNG_LIB_NAME} PROPERTIES
-#   VERSION 14.${PNGLIB_RELEASE}.1.4.1rc01
+#   VERSION 14.${PNGLIB_RELEASE}.1.4.3
     VERSION 14.${PNGLIB_RELEASE}.0
     SOVERSION 14
     CLEAN_DIRECT_OUTPUT 1)

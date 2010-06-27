@@ -14,9 +14,8 @@ O=.o
 L=.a
 E=
 
-ZOBJS  = adler32$(O) compress$(O) crc32$(O) deflate$(O) gzio$(O) \
-	 dummy_inflate$(O) \
-	 trees$(O) uncompr$(O) zutil$(O)
+ZOBJS  = adler32$(O) compress$(O) crc32$(O) deflate$(O) \
+	 trees$(O) zutil$(O)
 
 OBJS  = pnm2pngm$(O) png$(O) pngerror$(O) pngget$(O) pngmem$(O) \
 	pngset$(O) pngtrans$(O) pngwio$(O) pngwrite$(O) \
