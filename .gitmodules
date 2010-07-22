@@ -1,0 +1,3 @@
+[submodule "ext/gyputil"]
+	path = ext/gyputil
+	url = git://github.com/sfiera/gyputil.git
