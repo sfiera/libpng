@@ -25,9 +25,6 @@
                     '/usr/lib/libz.dylib',
                 ],
             },
-            'dependencies': [
-                ':check-deps',
-            ],
             'direct_dependent_settings': {
                 'include_dirs': [
                     '.',
@@ -39,7 +36,6 @@
             'type': 'executable',
             'sources': [ 'pngtest.c' ],
             'dependencies': [
-                ':check-deps',
                 'libpng',
             ],
         },
