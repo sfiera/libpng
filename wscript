@@ -1,13 +1,9 @@
 # -*- mode: python -*-
 
-DEFAULTS = {
-    "cflags": "-Wall -Werror",
-    "arch": "x86_64 i386 ppc",
-}
-
 def common(ctx):
     ctx.load("compiler_c")
     ctx.load("platforms", "ext/waf-sfiera")
+    ctx.load("test", "ext/waf-sfiera")
 
 def options(opt):
     common(opt)
@@ -15,6 +11,7 @@ def options(opt):
 def configure(cnf):
     common(cnf)
     cnf.check(lib="z", uselib_store="libpng/system/libz")
+    cnf.check(lib="m", uselib_store="libpng/system/libm")
 
 def build(bld):
     common(bld)
@@ -38,21 +35,30 @@ def build(bld):
             "pngerror.c",
             "pngpread.c",
         ],
+        cflags="-Wall -Werror",
         includes=".",
         export_includes=".",
         use=[
-            "libpng/common",
+            "libpng/system/libm",
             "libpng/system/libz",
         ],
-        **DEFAULTS
+    )
+
+    bld.platform(
+        target="libpng/libpng",
+        platform="darwin",
+        arch="x86_64 i386 ppc",
     )
 
     bld.program(
         target="libpng/pngtest",
         source="pngtest.c",
-        use=[
-            "libpng/common",
-            "libpng/libpng",
-        ],
-        **DEFAULTS
+        cflags="-Wall -Werror",
+        use="libpng/libpng",
+    )
+
+    bld.platform(
+        target="libpng/pngtest",
+        platform="darwin",
+        arch="x86_64 i386 ppc",
     )
