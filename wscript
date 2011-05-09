@@ -2,8 +2,7 @@
 
 def common(ctx):
     ctx.load("compiler_c")
-    ctx.load("platforms", "ext/waf-sfiera")
-    ctx.load("test", "ext/waf-sfiera")
+    ctx.load("core", "ext/waf-sfiera")
 
 def options(opt):
     common(opt)
