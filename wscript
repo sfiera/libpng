@@ -17,6 +17,7 @@ def build(bld):
 
     bld.stlib(
         target="libpng/libpng",
+        features="universal",
         source=[
             "png.c",
             "pngset.c",
@@ -43,21 +44,10 @@ def build(bld):
         ],
     )
 
-    bld.platform(
-        target="libpng/libpng",
-        platform="darwin",
-        arch="x86_64 i386 ppc",
-    )
-
     bld.program(
         target="libpng/pngtest",
+        features="universal",
         source="pngtest.c",
         cflags="-Wall -Werror",
         use="libpng/libpng",
-    )
-
-    bld.platform(
-        target="libpng/pngtest",
-        platform="darwin",
-        arch="x86_64 i386 ppc",
     )
