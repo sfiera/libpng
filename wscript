@@ -35,7 +35,6 @@ def build(bld):
             "pngerror.c",
             "pngpread.c",
         ],
-        cflags="-Wall -Werror",
         includes=".",
         export_includes=".",
         use=[
@@ -48,6 +47,5 @@ def build(bld):
         target="libpng/pngtest",
         features="universal",
         source="pngtest.c",
-        cflags="-Wall -Werror",
         use="libpng/libpng",
     )
